@@ -10,7 +10,7 @@ public class PlayerController : MonoBehaviour
     public float jumpHeight = 300f;
     Rigidbody2D rb;
     bool canJump = true;
-
+    public bool isLeft;
     private void Start()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -33,6 +33,19 @@ public class PlayerController : MonoBehaviour
         {
             rb.AddForce(gameObject.transform.up * jumpHeight);
             canJump = false;
+        }
+
+        //if Horizontal is less than 0, then the character will inverted so it looks left, where as its over 0 itll look right.
+        if (horizontal < 0)
+        {
+            transform.localScale = new Vector3(1, 1, 0);
+            isLeft = true;
+
+        }
+        else if (horizontal > 0)
+        {
+            transform.localScale = new Vector3(-1, 1, 0);
+            isLeft = false;
         }
     }
 
