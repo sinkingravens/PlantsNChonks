@@ -8,6 +8,11 @@ public class PlayerController : MonoBehaviour
     public KeyCode jumpKey = KeyCode.W;
     public float speed = 3.0f;
     public float jumpHeight = 300f;
+
+    [Header("Health")]
+    public float health = 100f;
+
+    [Header("Misc")]
     Rigidbody2D rb;
     bool canJump = true;
     public bool isLeft;
@@ -35,13 +40,14 @@ public class PlayerController : MonoBehaviour
             canJump = false;
         }
 
-        //if Horizontal is less than 0, then the character will inverted so it looks left, where as its over 0 itll look right.
+        //if Horizontal is less than 0, then the character will inverted so it looks left.
         if (horizontal < 0)
         {
             transform.localScale = new Vector3(1, 1, 0);
             isLeft = true;
 
         }
+        //if horizontal is more than 0, then the character will stay in its current position (looking right).
         else if (horizontal > 0)
         {
             transform.localScale = new Vector3(-1, 1, 0);

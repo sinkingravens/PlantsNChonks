@@ -4,21 +4,39 @@ using UnityEngine;
 
 public class Minions : MonoBehaviour
 {
-    public Transform Player;
+    [Header("Movement")]
+    GameObject player;
+    public Transform playerPosition;
     public float speed = 3f;
+
+    [Header("Zoning")]
+    public bool safeZone = true;
+    public bool isEnemy = true;
+
+    [Header("Health & Damage")]
+    public float health = 100f;
+    public float damage = 0f;
+
     void Start()
     {
-        
+        //finds the player that it'll chase
+        player = GameObject.FindGameObjectWithTag("Player");
+        playerPosition = player.transform;
     }
 
     void Update()
     {
-        Vector3 displacement = Player.position - transform.position;
-        displacement = displacement.normalized;
+        FollowPlayer();
+    }
 
-        if (Vector2.Distance(Player.position, transform.position) > 2.0f)
+    public void FollowPlayer()
+    {
+        Vector3 distance = playerPosition.position - transform.position;
+        distance = distance.normalized;
+        //if the distance is greater than 2 and the minion is in the safeZone, then follow that player"
+        if (Vector2.Distance(playerPosition.position, transform.position) > 1.0f && safeZone == true)
         {
-            transform.position += (displacement * speed * Time.deltaTime);
+            transform.position += (distance * speed * Time.deltaTime);
         }
     }
 }
