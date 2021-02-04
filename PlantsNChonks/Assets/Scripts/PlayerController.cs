@@ -16,6 +16,7 @@ public class PlayerController : MonoBehaviour
     Rigidbody2D rb;
     bool canJump = true;
     public bool isLeft;
+
     private void Start()
     {
         rb = GetComponent<Rigidbody2D>();

@@ -11,7 +11,6 @@ public class MinionZone : MonoBehaviour
         minions = GameObject.FindGameObjectWithTag("Minion");
     }
 
-    // Update is called once per frame
     void Update()
     {
         
@@ -19,11 +18,13 @@ public class MinionZone : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
+        //Minions are in their safe zone, and will follow the enemy if its inside it
         minions.GetComponent<Minions>().safeZone = true;
     }
 
     private void OnTriggerExit2D(Collider2D collision)
     {
+        //Minions arent in their safezone and will stop following the player.
         minions.GetComponent<Minions>().safeZone = false;
     }
 }
