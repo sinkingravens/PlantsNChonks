@@ -13,13 +13,13 @@ public class PlayerController : MonoBehaviour
     public float health = 100f;
 
     [Header("Misc")]
-    Rigidbody2D rb;
-    bool canJump = true;
     public bool isLeft;
+    public bool isUp = false;
+    public bool isDown;
 
     private void Start()
     {
-        rb = GetComponent<Rigidbody2D>();
+
     }
 
     private void Update()
@@ -30,22 +30,18 @@ public class PlayerController : MonoBehaviour
     public void Movement()
     {
         float horizontal = Input.GetAxis("Horizontal");
+        float vertical = Input.GetAxis("Vertical");
         Vector2 position = transform.position;
         position.x = position.x + speed * horizontal * Time.deltaTime;
+        position.y = position.y + speed * vertical * Time.deltaTime;
         transform.position = position;
-
-        //if jumpKey is down Jump & canJump is true, then it'll jump. CanJump turns then to false in order to stop the player from jumping more than once.
-        if (Input.GetKeyDown(jumpKey) && canJump == true)
-        {
-            rb.AddForce(gameObject.transform.up * jumpHeight);
-            canJump = false;
-        }
 
         //if Horizontal is less than 0, then the character will inverted so it looks left.
         if (horizontal < 0)
         {
             transform.localScale = new Vector3(1, 1, 0);
             isLeft = true;
+            isUp = false;
 
         }
         //if horizontal is more than 0, then the character will stay in its current position (looking right).
@@ -53,15 +49,22 @@ public class PlayerController : MonoBehaviour
         {
             transform.localScale = new Vector3(-1, 1, 0);
             isLeft = false;
+            isUp = false;
+            isDown = false;
         }
-    }
-
-    private void OnCollisionEnter2D(Collision2D collision)
-    {
-        //if player collides with the tag Ground, the bool canJump will be true and the player will be able to jump once again.
-        if (collision.collider.tag == "Ground")
+        //if vertical is less than 0, then the character is looking down
+        else if(vertical < 0)
         {
-            canJump = true;
+            isDown = true;
+            isUp = false;
+            isLeft = false;
+        }
+        //if vertical is more than 0, then the character is looking up;
+        else if(vertical > 0)
+        {
+            isUp = true;
+            isLeft = false;
+            isDown = false;
         }
     }
 

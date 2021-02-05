@@ -26,11 +26,22 @@ public class Guns : MonoBehaviour
         {
             Debug.Log("shot");
             GameObject shot = GameObject.Instantiate(ammo, transform.position, transform.rotation);
-            //Mirrors the ammunition as the player is mirrored
-            if (player.GetComponent<PlayerController>().isLeft)
+            //If isUp is true, then the bullets will shoot up
+            if(player.GetComponent<PlayerController>().isUp)
+            {
+                shot.GetComponent<Rigidbody2D>().velocity = transform.up * ammoSpeed;
+            }
+            // else itll shoot down
+            else if(player.GetComponent<PlayerController>().isDown)
+            {
+                shot.GetComponent<Rigidbody2D>().velocity = -transform.up * ammoSpeed;
+            }
+            //if isLeft is true then itll shoot to the left
+            else if(player.GetComponent<PlayerController>().isLeft)
             {
                 shot.GetComponent<Rigidbody2D>().velocity = (-transform.right * ammoSpeed);
             }
+            //else itll shoot to the right
             else if (!player.GetComponent<PlayerController>().isLeft)
             {
                 shot.GetComponent<Rigidbody2D>().velocity = (transform.right * ammoSpeed);
