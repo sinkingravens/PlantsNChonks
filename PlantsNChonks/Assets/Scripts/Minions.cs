@@ -11,7 +11,6 @@ public class Minions : MonoBehaviour
 
     [Header("Zoning")]
     public bool enemySpotted = true;
-    public bool isEnemy = true;
 
     [Header("Health & Damage")]
     public float health = 100f;
@@ -40,21 +39,4 @@ public class Minions : MonoBehaviour
         }
     }
 
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-        //if a player is nearby in its sight, then enemy spotted is true
-        if (collision.CompareTag("Player"))
-        {
-            enemySpotted = true;
-        }
-    }
-
-    private void OnTriggerExit2D(Collider2D collision)
-    {
-        //if it leaves out of the minions sight, its false
-        if (collision.CompareTag("Player"))
-        {
-            enemySpotted = false;
-        }
-    }
 }
