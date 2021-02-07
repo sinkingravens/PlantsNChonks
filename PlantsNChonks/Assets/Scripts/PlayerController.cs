@@ -42,6 +42,7 @@ public class PlayerController : MonoBehaviour
             transform.localScale = new Vector3(1, 1, 0);
             isLeft = true;
             isUp = false;
+            isDown = false;
 
         }
         //if horizontal is more than 0, then the character will stay in its current position (looking right).

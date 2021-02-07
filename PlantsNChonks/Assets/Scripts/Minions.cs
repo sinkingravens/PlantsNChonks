@@ -10,7 +10,7 @@ public class Minions : MonoBehaviour
     public float speed = 3f;
 
     [Header("Zoning")]
-    public bool safeZone = true;
+    public bool enemySpotted = true;
     public bool isEnemy = true;
 
     [Header("Health & Damage")]
@@ -33,10 +33,28 @@ public class Minions : MonoBehaviour
     {
         Vector3 distance = playerPosition.position - transform.position;
         distance = distance.normalized;
-        //if the distance is greater than 2 and the minion is in the safeZone, then follow that player"
-        if (Vector2.Distance(playerPosition.position, transform.position) > 1.0f && safeZone == true)
+        //if the distance is greater than 2 and the minion has spotted an enemy, then follow that player"
+        if (Vector2.Distance(playerPosition.position, transform.position) > 1.0f && enemySpotted == true)
         {
             transform.position += (distance * speed * Time.deltaTime);
+        }
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        //if a player is nearby in its sight, then enemy spotted is true
+        if (collision.CompareTag("Player"))
+        {
+            enemySpotted = true;
+        }
+    }
+
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        //if it leaves out of the minions sight, its false
+        if (collision.CompareTag("Player"))
+        {
+            enemySpotted = false;
         }
     }
 }
