@@ -9,6 +9,7 @@ public class GunsV2 : MonoBehaviour
     public KeyCode shootKey = KeyCode.E;
     public float bulletSpeed = 30f;
 
+
     public GameObject bullet;
     public Transform firePoint;
 
@@ -18,23 +19,35 @@ public class GunsV2 : MonoBehaviour
     private void Update()
     {
         InputProcess();
+        RotationProcess();
+        Shooting();
     }
-
     void InputProcess()
     {
+        //Cursor being calculated where it is on the screen
         cursorDirection = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         cursorAngle = Mathf.Atan2(cursorDirection.y, cursorDirection.x) * Mathf.Rad2Deg;
-
+        //Rotates the firepoint so it can shoot the correct way.
         firePoint.rotation = Quaternion.Euler(0, 0, cursorAngle);
-        if(Input.GetKeyDown(shootKey))
+    }
+
+    void Shooting()
+    {
+        //if shootKey is pressed, the bullet goes pew pew towards cursorAngle.
+        if (Input.GetKeyDown(shootKey))
         {
             GameObject bulletGoesPewPew = Instantiate(bullet);
             bulletGoesPewPew.transform.position = firePoint.position;
             bulletGoesPewPew.transform.rotation = Quaternion.Euler(0, 0, cursorAngle);
 
-            bulletGoesPewPew.GetComponent<Rigidbody2D>().velocity = firePoint.right * bulletSpeed; 
+            bulletGoesPewPew.GetComponent<Rigidbody2D>().velocity = firePoint.right * bulletSpeed;
+            Debug.Log("" + cursorAngle + "");
         }
     }
 
+    void RotationProcess()
+    {
+        this.transform.rotation = Quaternion.Euler(0, 0, cursorAngle);
+    }
 
 }
