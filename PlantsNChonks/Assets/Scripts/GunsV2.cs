@@ -6,7 +6,7 @@ public class GunsV2 : MonoBehaviour
 {
 
     [Header("Key Mechanics")]
-    public KeyCode shootKey = KeyCode.E;
+    public KeyCode useKey = KeyCode.E;
     public float bulletSpeed = 30f;
 
 
@@ -34,7 +34,7 @@ public class GunsV2 : MonoBehaviour
     void Shooting()
     {
         //if shootKey is pressed, the bullet goes pew pew towards cursorAngle.
-        if (Input.GetKeyDown(shootKey))
+        if (Input.GetKeyDown(useKey))
         {
             GameObject bulletGoesPewPew = Instantiate(bullet);
             bulletGoesPewPew.transform.position = firePoint.position;
