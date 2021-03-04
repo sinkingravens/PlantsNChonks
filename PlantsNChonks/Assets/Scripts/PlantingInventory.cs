@@ -22,12 +22,12 @@ public class PlantingInventory : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Inventory();
+        InventorySeeds();
         useCurrentPlant();
 
     }
 
-    public void Inventory()
+    public void InventorySeeds()
     {
         //if input is switchRight switch plantSeed to another.
         if (Input.GetKeyDown(switchRight))
