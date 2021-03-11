@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3308172297074230336}
   - component: {fileID: 353425009444719228}
+  - component: {fileID: 1888060468121464832}
   m_Layer: 0
   m_Name: Wheat
   m_TagString: Untagged
@@ -82,3 +83,18 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &1888060468121464832
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 889124293688920164}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a42699f7c010a94fbb903441021cc88, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isHarvestable: 0
+  plantTime: 0
+  timeUntilHarvestable: 10
