@@ -134,6 +134,7 @@ GameObject:
   - component: {fileID: 143595084}
   - component: {fileID: 143595085}
   - component: {fileID: 143595086}
+  - component: {fileID: 143595087}
   m_Layer: 0
   m_Name: Hand
   m_TagString: Untagged
@@ -178,7 +179,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 143595083}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 24171f3739c7ff04e96c271e271c3353, type: 3}
   m_Name: 
@@ -192,6 +193,23 @@ MonoBehaviour:
   plantTransform: {fileID: 143595084}
   plantSpace: 2
   plantCurrent: 1
+--- !u!114 &143595087
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 143595083}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 16edc72e0cf713347ac38bdeb5748014, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  essentialItemHotbar: []
+  itemSpace: 0
+  itemCurrent: 0
+  switchUp: 0
+  switchDown: 0
 --- !u!1 &244622887
 GameObject:
   m_ObjectHideFlags: 0
@@ -450,7 +468,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 2
+  orthographic size: 2.4
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
