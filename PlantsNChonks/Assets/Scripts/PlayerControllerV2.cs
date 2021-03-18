@@ -9,8 +9,6 @@ public class PlayerControllerV2 : MonoBehaviour
     public Rigidbody2D rb;
     private Vector2 position;
 
-    public Animator animator;
-
     void Start()
     {
         
@@ -31,10 +29,6 @@ public class PlayerControllerV2 : MonoBehaviour
         //Processes the input
         position.x = Input.GetAxisRaw("Horizontal");
         position.y = Input.GetAxisRaw("Vertical");
-
-        //Sets the animators value to the correct ones
-        animator.SetFloat("Horizontal", position.x);
-        animator.SetFloat("Vertical", position.y);
 
         //Makes sure when you walk between horizontal & vertical that its the same speed
         position = new Vector2(position.x, position.y).normalized;
