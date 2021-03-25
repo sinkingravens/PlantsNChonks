@@ -5,6 +5,7 @@ using UnityEngine;
 public class PlantsBehaviour : MonoBehaviour
 {
     public bool isHarvestable = false;
+    public KeyCode useKey = KeyCode.Mouse0; //Fix this later to avoid using it multiple times
     
     //Clock
     [SerializeField] private float plantTime;
@@ -38,5 +39,13 @@ public class PlantsBehaviour : MonoBehaviour
                 plantTime = 0;
             }
         }
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+       if(Input.GetKeyDown(useKey))
+       {
+
+       }
     }
 }

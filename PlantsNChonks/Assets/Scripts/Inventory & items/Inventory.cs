@@ -10,6 +10,8 @@ public class Inventory : MonoBehaviour
     [SerializeField] private int itemSpace;
     [SerializeField] private Transform itemHolder;
 
+    public bool activeScythe = false;
+
     void Start()
     {
         
@@ -32,6 +34,7 @@ public class Inventory : MonoBehaviour
                 if(itemHolder.childCount > 0)
                 {
                     GameObject item = itemHolder.GetChild(0).gameObject;
+                    activeScythe = false;
                     Destroy(item);
 
                 }
@@ -42,6 +45,7 @@ public class Inventory : MonoBehaviour
                 if (itemHolder.childCount > 0)
                 {
                     GameObject item = itemHolder.GetChild(0).gameObject;
+                    activeScythe = false;
                     Destroy(item);
                 }
                 Instantiate(typeOfTools[itemCurrent - 1], itemHolder);
@@ -58,6 +62,7 @@ public class Inventory : MonoBehaviour
                 if (itemHolder.childCount > 0)
                 {
                     GameObject item = itemHolder.GetChild(0).gameObject;
+                    activeScythe = false;
                     Destroy(item);
                 }
                 Instantiate(typeOfTools[itemCurrent - 1], itemHolder);
@@ -68,6 +73,7 @@ public class Inventory : MonoBehaviour
                 if (itemHolder.childCount > 0)
                 {
                     GameObject item = itemHolder.GetChild(0).gameObject;
+                    activeScythe = false;
                     Destroy(item);
                 }
                 Instantiate(typeOfTools[itemCurrent - 1], itemHolder);
